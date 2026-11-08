@@ -1,6 +1,6 @@
 # hls-dl — command-line HLS downloader
 
-A CLI built on this repo's extension code (`M3u8Parser`, `FetchLoader`,
+A CLI (interactive menu or one-shot commands) built on this repo's extension code (`M3u8Parser`, `FetchLoader`,
 `CryptoDecryptor` from `src/background`, plus `src/core` use-cases). Paste a
 link, get an `.mp4`.
 
@@ -14,7 +14,34 @@ npm install
 npm link        # puts `hls-dl` on your PATH
 ```
 
-## Usage
+## Interactive mode
+
+Run `hls-dl` with no arguments for a full-screen menu (same UX as `callrec`'s `rec`):
+
+```
+  ↓ hls-dl  download HLS videos from a link
+
+  save to  ~/Downloads
+  quality  ask each time
+  ffmpeg   ✓ found
+
+  ▸ ↓  Download from a link  link on clipboard
+    ▤  Recent downloads  2
+    ⚙  Settings
+    ✕  Quit
+```
+
+- **Download** (`d`): paste a link (a link already on your clipboard is filled in), pick a
+  quality and audio track, confirm the file name, then watch per-track progress bars with
+  size, speed and time left. `esc` twice cancels and removes partial files.
+- **Recent downloads** (`l`): `enter` plays, `o` shows in Finder, `f` opens the folder.
+- **Settings** (`s`): save folder, default quality (ask / best / 1080 / 720 / 480 / smallest),
+  parallel downloads, and a Referer header for sites that need one. Saved to
+  `~/.config/hls-dl/config.json`; history is in `~/.config/hls-dl/history.json`.
+
+## Direct mode
+
+Pass URLs to skip the menu (good for scripts):
 
 ```sh
 hls-dl "https://example.com/path/master.m3u8"
