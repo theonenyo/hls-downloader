@@ -1,0 +1,25 @@
+{
+  "name": "hls-dl",
+  "version": "0.1.0",
+  "description": "Command-line HLS downloader built on the HLS Downloader extension's core",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "hls-dl": "dist/hls-dl.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "prepare": "node build.mjs"
+  },
+  "dependencies": {
+    "m3u8-parser": "7.2.0",
+    "url-toolkit": "2.2.5",
+    "uuid": "14.0.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.0"
+  }
+}
